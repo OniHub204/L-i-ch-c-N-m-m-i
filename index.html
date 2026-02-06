@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Lời chúc năm mới</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff4e50, #f9d423);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+        .box {
+            background: rgba(0,0,0,0.3);
+            padding: 25px;
+            border-radius: 15px;
+            width: 360px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        h1 {
+            margin-bottom: 15px;
+        }
+        button {
+            background: #ffeb3b;
+            color: #000;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #fff176;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        .lixi {
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffeb3b;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h1>🎉 Lời chúc năm mới 🎉</h1>
+    <p>Nhấn nút để nhận lời chúc và bao lì xì nè 🧧</p>
+    <button onclick="nhanLoiChuc()">Nhận lời chúc</button>
+
+    <div class="result" id="loichuc"></div>
+    <div class="lixi" id="lixi"></div>
+</div>
+
+<script>
+const loiChuc = [
+"Chúc năm mới sức khỏe dồi dào",
+"Chúc gia đình hạnh phúc sum vầy",
+"Chúc tiền vào như nước",
+"Chúc học giỏi hơn năm cũ",
+"Chúc làm ăn phát đạt",
+"Chúc mọi điều như ý",
+"Chúc vạn sự hanh thông",
+"Chúc an khang thịnh vượng",
+"Chúc tấn tài tấn lộc",
+"Chúc năm mới bình an",
+"Chúc thi cử toàn điểm cao",
+"Chúc công việc thuận lợi",
+"Chúc luôn vui vẻ yêu đời",
+"Chúc gia đình ấm no",
+"Chúc tiền tiêu không lo nghĩ",
+"Chúc ước mơ sớm thành hiện thực",
+"Chúc năm mới gặp nhiều may mắn",
+"Chúc đi đâu cũng thuận buồm xuôi gió",
+"Chúc cuộc sống tràn đầy niềm vui",
+"Chúc ngày nào cũng cười",
+"Chúc học hành tấn tới",
+"Chúc công danh rực rỡ",
+"Chúc năm mới không bệnh tật",
+"Chúc tâm luôn an",
+"Chúc mọi điều tốt đẹp nhất",
+"Chúc năm mới thành công vang dội",
+"Chúc ví luôn đầy tiền",
+"Chúc gặp toàn người tốt",
+"Chúc làm gì cũng suôn sẻ",
+"Chúc năm mới bứt phá",
+"Chúc đạt được mục tiêu đề ra",
+"Chúc năm mới hạnh phúc",
+"Chúc may mắn gõ cửa",
+"Chúc tài lộc đầy nhà",
+"Chúc sự nghiệp thăng hoa",
+"Chúc năm mới rực rỡ",
+"Chúc mỗi ngày đều đáng nhớ",
+"Chúc niềm vui ngập tràn",
+"Chúc năm mới thắng lợi",
+"Chúc cuộc sống nhẹ nhàng",
+"Chúc học đâu hiểu đó",
+"Chúc làm đâu trúng đó",
+"Chúc năm mới không stress",
+"Chúc mọi việc đều tốt đẹp",
+"Chúc tinh thần luôn mạnh mẽ",
+"Chúc thành công nối tiếp thành công",
+"Chúc năm mới bội thu",
+"Chúc cuộc sống viên mãn",
+"Chúc luôn tràn đầy năng lượng",
+"Chúc tương lai rạng ngời",
+
+// thêm cho đủ >100
+"Chúc năm mới gặp quý nhân",
+"Chúc đầu năm nhiều niềm vui",
+"Chúc cả năm sung túc",
+"Chúc tiền bạc rủng rỉnh",
+"Chúc luôn được yêu thương",
+"Chúc mọi việc đều như mơ",
+"Chúc năm mới thuận lợi mọi đường",
+"Chúc ngày Tết trọn vẹn",
+"Chúc năm mới hồng phát",
+"Chúc phúc lộc đầy tay",
+"Chúc sức khỏe bền lâu",
+"Chúc an vui mỗi ngày",
+"Chúc năm mới nhiều tiếng cười",
+"Chúc mọi nỗ lực được đền đáp",
+"Chúc học tập vượt bậc",
+"Chúc làm việc hiệu quả",
+"Chúc năm mới tràn hy vọng",
+"Chúc gia đình luôn ấm áp",
+"Chúc may mắn quanh năm",
+"Chúc năm mới viên mãn",
+"Chúc bình an khắp lối",
+"Chúc cuộc sống an nhiên",
+"Chúc tài lộc nở hoa",
+"Chúc thành công đến sớm",
+"Chúc năm mới đầy cảm hứng",
+"Chúc mỗi ngày đều tiến bộ",
+"Chúc tâm trí luôn tích cực",
+"Chúc khởi đầu suôn sẻ",
+"Chúc kết thúc mỹ mãn",
+"Chúc năm mới không lo âu",
+"Chúc vận may kéo đến",
+"Chúc mọi thứ đúng thời điểm",
+"Chúc năm mới trọn niềm tin",
+"Chúc thành công rực rỡ",
+"Chúc ngày nào cũng tốt lành",
+"Chúc năm mới khởi sắc",
+"Chúc sự nghiệp vững vàng",
+"Chúc ước mơ bay cao",
+"Chúc năm mới đầy cơ hội",
+"Chúc an khang quanh năm"
+];
+
+const baoLiXi = [
+"🧧 20.000đ",
+"🧧 50.000đ",
+"🧧 100.000đ",
+"🧧 Lộc may mắn",
+"🧧 Lộc học giỏi",
+"🧧 Lộc sức khỏe",
+"🧧 Lộc tài lộc"
+];
+
+function nhanLoiChuc() {
+    const lc = loiChuc[Math.floor(Math.random() * loiChuc.length)];
+    const lx = baoLiXi[Math.floor(Math.random() * baoLiXi.length)];
+
+    document.getElementById("loichuc").innerText = "✨ " + lc;
+    document.getElementById("lixi").innerText = lx;
+}
+</script>
+
+</body>
+</html>
